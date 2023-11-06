@@ -55,6 +55,7 @@ export type InvoicesTable = {
   status: 'pending' | 'paid';
 };
 
+//данные по счетам каждого из клиентов
 export type CustomersTable = {
   id: string;
   name: string;
@@ -65,6 +66,7 @@ export type CustomersTable = {
   total_paid: number;
 };
 
+//отформатированы суммы счетов оплаченных и не оплаченных
 export type FormattedCustomersTable = {
   id: string;
   name: string;
