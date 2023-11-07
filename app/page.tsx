@@ -1,4 +1,5 @@
 import AcmeLogo from '@/app/ui/acme-logo';
+import triangle from '@/app/ui/home.module.css';
 
 import Link from 'next/link';
 export default function Page() {
@@ -8,7 +9,9 @@ export default function Page() {
         {/* <AcmeLogo /> */}
       </div>
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
+        {/* left side bar */}
         <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
+          <div className={triangle.shape} />
           <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
             <strong>Welcome to Acme.</strong> This is the example for the{' '}
             <a href="https://nextjs.org/learn/" className="text-blue-500">

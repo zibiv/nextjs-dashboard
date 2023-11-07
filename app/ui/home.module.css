@@ -1,0 +1,22 @@
+.shape {
+  height: 0;
+  width: 0;
+  border-bottom: 30px solid salmon;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  animation-name: rotation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform-origin: center;
+}
+
+@keyframes rotation {
+  from{
+    transform: rotate(0deg);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
+}
