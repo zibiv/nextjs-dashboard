@@ -1,4 +1,5 @@
 import { sql } from '@vercel/postgres';
+//типы
 import {
   CustomerField,
   CustomersTable,
@@ -8,8 +9,11 @@ import {
   User,
   Revenue,
 } from './definitions';
+//utils
 import { formatCurrency } from './utils';
 
+
+//Все Data Queries которые будут использоваться в проекте
 export async function fetchRevenue() {
   // Add noStore() here prevent the response from being cached.
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
@@ -18,12 +22,12 @@ export async function fetchRevenue() {
     // Artificially delay a reponse for demo purposes.
     // Don't do this in real life :)
 
-    // console.log('Fetching revenue data...');
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('Fetching revenue data...');
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch complete after 3 seconds.');
+    console.log('Data fetch complete after 3 seconds.');
 
     return data.rows;
   } catch (error) {
@@ -32,8 +36,11 @@ export async function fetchRevenue() {
   }
 }
 
+//Invoices
+//получение пяти последних счетов
 export async function fetchLatestInvoices() {
   try {
+    //получение последних пяти выставленных счетов + данные о клиенте
     const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -41,6 +48,7 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
+    //данные в таблице хранятся как целое число где две последние цифры это центы, данные форматируются - деляться на 100 и приводятся к формату долларов
     const latestInvoices = data.rows.map((invoice) => ({
       ...invoice,
       amount: formatCurrency(invoice.amount),
@@ -168,6 +176,8 @@ export async function fetchInvoiceById(id: string) {
   }
 }
 
+
+//Customers
 export async function fetchCustomers() {
   try {
     const data = await sql<CustomerField>`
