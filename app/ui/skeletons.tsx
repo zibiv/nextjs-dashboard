@@ -82,6 +82,7 @@ export function LatestInvoicesSkeleton() {
   );
 }
 
+//сбор для дашборда
 export default function DashboardSkeleton() {
   return (
     <>
