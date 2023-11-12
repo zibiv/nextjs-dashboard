@@ -17,6 +17,7 @@ export default async function InvoicesTable({
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+          {/* //таблица для мобильных экранов */}
           <div className="md:hidden">
             {invoices?.map((invoice) => (
               <div
@@ -58,21 +59,22 @@ export default async function InvoicesTable({
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                  Customer
+                  Заказчик
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Email
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Amount
+                  Сумма
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Date
+                  Дата
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Status
+                  Статус
                 </th>
                 <th scope="col" className="relative py-3 pl-6 pr-3">
+                  {/* //надпись для экранных ридеров */}
                   <span className="sr-only">Edit</span>
                 </th>
               </tr>
