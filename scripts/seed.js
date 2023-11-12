@@ -7,6 +7,19 @@ const {
 } = require('../app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
+async function clearDB(client){
+  const tables = ["users", "invoices", "customers", "revenue"]
+  try {
+    await Promise.all(tables.map( async (table) => {
+      const query = `DROP TABLE IF EXISTS ${table};`
+      return client.query(query)
+    } ))
+  } catch(error) {
+    console.error('Error dropping tables:', error);
+    throw error;
+  }
+}
+
 async function seedUsers(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
@@ -162,6 +175,8 @@ async function seedRevenue(client) {
 
 async function main() {
   const client = await db.connect();
+
+  await clearDB(client);
 
   await seedUsers(client);
   await seedCustomers(client);

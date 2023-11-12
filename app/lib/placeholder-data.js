@@ -70,6 +70,18 @@ const customers = [
     email: 'balazs@orban.com',
     image_url: '/customers/balazs-orban.png',
   },
+  {
+    id: '76d65c26-f784-44a2-ac19-586678f7c2a5',
+    name: 'Братики Красиво 94 всегда вместе',
+    email: 'bratiki@krasivo.ru',
+    image_url: '/customers/delba-de-oliveira.png',
+  },
+  {
+    id: '76d65c26-f784-44a2-ac19-586678f7c333',
+    name: 'Geasha pelmesha',
+    email: 'gena@gena.ru',
+    image_url: '/customers/delba-de-oliveira.png',
+  }
 ];
 
 const invoices = [
@@ -163,6 +175,18 @@ const invoices = [
     status: 'paid',
     date: '2022-06-05',
   },
+  {
+    customer_id: customers.at(-2).id,
+    amount: 100000,
+    status: 'paid',
+    date: '2023-06-05',
+  },
+  {
+    customer_id: customers.at(-1).id,
+    amount: 22312,
+    status: 'paid',
+    date: '2023-06-05',
+  }
 ];
 
 const revenue = [
