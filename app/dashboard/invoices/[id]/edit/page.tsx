@@ -1,7 +1,7 @@
 import { fetchCustomers, fetchInvoiceById } from '@/app/lib/data';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import EditInvoiceForm from '@/app/ui/invoices/edit-form';
-import { redirect } from 'next/navigation';
+import { notFound  } from 'next/navigation';
 import { FC } from 'react';
 
 interface UpdateInvoiceProps {
@@ -19,7 +19,7 @@ const UpdateInvoice: FC<UpdateInvoiceProps> = async ({ params: { id } }) => {
   ]);
   //проверить наличие данных
   if (!invoice) {
-    redirect('/dashboard/invoices');
+    notFound();
   }
 
   return (
