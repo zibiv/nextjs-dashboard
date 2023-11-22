@@ -11,6 +11,7 @@ export default async function InvoicesTable({
   query: string;
   currentPage: number;
 }) {
+  //получаем данные по счетам учитывая запрос и страницу на которой находится пользователь
   const invoices = await fetchFilteredInvoices(query, currentPage);
 
   return (
